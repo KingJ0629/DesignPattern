@@ -10,9 +10,9 @@ class ChainTest {
 		
 		for (int i = 0; i < 10; i++) {
 			int requestNum = (int) (Math.random() * 10);
-			String result = DispatchHandler.getDispatcher().dispatchHandler(requestNum);
+			String result = RequestDispatcher.getDispatcher().dispatch(requestNum);
 			
-			if (!DispatchHandler.NO_HANDLER.equals(result))
+			if (!RequestDispatcher.NO_HANDLER.equals(result))
 				System.out.println(result + "  处理了请求，请求内容是 " + requestNum);
 			else
 				System.out.println(result);

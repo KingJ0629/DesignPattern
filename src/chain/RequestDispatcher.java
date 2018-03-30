@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Jin on 2018/3/30.
  * Description 分发处理管理类
  */
-class DispatchHandler {
+class RequestDispatcher {
 	
 	List<Handler> handlerList = null;
 	
@@ -21,7 +21,7 @@ class DispatchHandler {
 	 * 分发给处理者
 	 * @param requestNum 请求数字
 	 */
-	public String dispatchHandler(int requestNum) {
+	public String dispatch(int requestNum) {
 		if (!hasInit) {
 			return init(requestNum);
 		}
@@ -44,7 +44,6 @@ class DispatchHandler {
 	
 	/**
 	 * 初始化责任链
-	 * @param requestNum
 	 */
 	private String init(int requestNum) {
 		hasInit = true;
@@ -55,7 +54,7 @@ class DispatchHandler {
 		handlerList.add(new HandlerB(this));
 		handlerList.add(new HandlerC(this));
 		
-		return dispatchHandler(requestNum);
+		return dispatch(requestNum);
 	}
 	
 	private void checkHandlerNull(Handler handler) {
@@ -63,7 +62,7 @@ class DispatchHandler {
 			throw new NullPointerException("处理者异常!");
 	}
 	
-	public static DispatchHandler getDispatcher() {
-		return new DispatchHandler();
+	public static RequestDispatcher getDispatcher() {
+		return new RequestDispatcher();
 	}
 }

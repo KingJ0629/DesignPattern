@@ -6,16 +6,16 @@ package chain;
  */
 class HandlerA implements Handler {
 	
-	DispatchHandler mDispatchHandler;
+	RequestDispatcher mRequestDispatcher;
 	
-	public HandlerA(DispatchHandler mDispatchHandler) {
-		this.mDispatchHandler = mDispatchHandler;
+	public HandlerA(RequestDispatcher mRequestDispatcher) {
+		this.mRequestDispatcher = mRequestDispatcher;
 	}
 	
 	@Override
 	public String handleRequest(int requestNum) {
 		if (requestNum > 3) {
-			return mDispatchHandler.dispatchHandler(requestNum);
+			return mRequestDispatcher.dispatch(requestNum);
 		} else {
 			return getClass().getSimpleName();
 		}
